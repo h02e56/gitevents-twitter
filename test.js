@@ -1,16 +1,15 @@
-var gitupTwitter = require('./index.js')();
+var giteventsTwitter = require('./index.js')();
 var test = require('tape');
-var util = require('util')
 
 test('post tweet works', function(t){
 	t.plan(1)
 
 	var res = false;
 	var fakeData = {
-		status: 'test fake data2'
+		status: 'test fake dat2' + Math.random(233333);
 	}
 
-	gitupTwitter.sendTweet(fakeData, function(err, data){
+	giteventsTwitter.sendTweet(fakeData, function(err, data){
 		if(err) {
 			console.log(err);
 		}else res=true
