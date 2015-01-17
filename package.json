@@ -2,11 +2,12 @@
   "name": "gitevents-twitter",
   "version": "0.0.1",
   "private": false,
+  "description": "Wrapper module to send tweets",
   "scripts": {
     "test": "tape test.js",
     "debug": "node-debug test.js"
   },
-  "author":"",
+  "author": "Josep Boada <josep@h02e56.com>",
   "main": "index.js",
   "test": "test.js",
   "dependencies": {
