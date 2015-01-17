@@ -1,4 +1,4 @@
-var gitupTwitter = require('./index.js')();
+var gitupTwitter = require('./index.js');
 var test = require('tape');
 var util = require('util')
 
@@ -14,24 +14,23 @@ test('conection to twitter api works', function(t){
 	})
 });
 
-
-
-test('post api works', function(t){
+test('post twt api works', function(t){
 	t.plan(1)
 
-	gitupTwitter.upload({
-	        'status': 'Posting a tweet w/ attached media.'
-	    },
-	    function(err, data){
-			var res
-			if(err) {
-				res = false
-				console.log(err)	
-			}
-			else res = true;
+	var res = false;
+	var fakeData = {
+		status: 'test fake data'
+	}
 
-			t.equal(res, false);
+	gitupTwitter.upload(fakeData, function(err, data){
+		if(err) {
+			console.log(err);
+		}else res=true
+		
+		t.equal(res, true);
 	})
+
+
 });
 
 

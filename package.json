@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon test.js",
-    "test": "node test.js"
+    "test": "tape test.js",
+    "debug": "node-debug test.js"
   },
   "main": "index.js",
   "test": "test.js",
