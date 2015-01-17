@@ -6,7 +6,7 @@ test('post tweet works', function(t){
 
 	var res = false;
 	var fakeData = {
-		status: 'test fake dat2' + Math.random(233333);
+		status: 'test fake dat2' + makeid()
 	}
 
 	giteventsTwitter.sendTweet(fakeData, function(err, data){
@@ -16,6 +16,17 @@ test('post tweet works', function(t){
 		
 		t.equal(res, true);
 	})
+
+	function makeid()
+	{
+		var text = "";
+		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+		for( var i=0; i < 5; i++ )
+		    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		return text;
+	}
 });
 
 
