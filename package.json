@@ -1,0 +1,20 @@
+{
+  "name": "gitupTwitter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon test.js",
+    "test": "node test.js"
+  },
+  "main": "index.js",
+  "test": "test.js",
+  "dependencies": {
+    "body-parser": "~1.8.1",
+    "debug": "~2.0.0",
+    "node-twitter": "^0.5.2"
+  },
+  "devDependencies": {
+    "tape": "^3.2.0"
+  }
+}
