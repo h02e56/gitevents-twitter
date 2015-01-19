@@ -1,6 +1,6 @@
 gitevents-twitter
 =====
-Twitter module for gitevents (https://github.com/h02e56/gitevents-twitter.git)
+Twitter module for gitevents [https://github.com/h02e56/gitevents-twitter.git](https://github.com/h02e56/gitevents-twitter.git)
 
 # Introduction
 
@@ -12,7 +12,7 @@ gitevents-twitter is an gitevents module that will publish:
 * 2. new job offers
 * 3. congrats the speaker and ,in case they exist, publish link to the talk slides
 
-this module will receive an object like this [https://github.com/h02e56/gitevents-twitter/blob/master/sample_data.js]
+this module will receive an object like [this](https://github.com/h02e56/gitevents-twitter/blob/master/sample_data.js)
 
 # Basic usage
 
