@@ -1,158 +1,47 @@
-[
-    {
-        "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3",
-        "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/labels{/name}",
-        "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/comments",
-        "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/3/events",
-        "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/3",
-        "id": 54695469,
-        "number": 3,
-        "title": "Your Awesome Talk",
-        "user": {
-            "login": "PatrickHeneise",
-            "id": 74390,
-            "avatar_url": "https://avatars.githubusercontent.com/u/74390?v=3",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/PatrickHeneise",
-            "html_url": "https://github.com/PatrickHeneise",
-            "followers_url": "https://api.github.com/users/PatrickHeneise/followers",
-            "following_url": "https://api.github.com/users/PatrickHeneise/following{/other_user}",
-            "gists_url": "https://api.github.com/users/PatrickHeneise/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/PatrickHeneise/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/PatrickHeneise/subscriptions",
-            "organizations_url": "https://api.github.com/users/PatrickHeneise/orgs",
-            "repos_url": "https://api.github.com/users/PatrickHeneise/repos",
-            "events_url": "https://api.github.com/users/PatrickHeneise/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/PatrickHeneise/received_events",
-            "type": "User",
-            "site_admin": false
-        },
-        "labels": [
-            {
-                "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk+proposal",
-                "name": "talk proposal",
-                "color": "0052cc"
-            }
-        ],
-        "state": "open",
-        "locked": false,
-        "assignee": null,
-        "milestone": {
-            "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1",
-            "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1/labels",
-            "id": 939881,
-            "number": 1,
-            "title": "Some NodeJS Event in the Future",
-            "description": "Where: Barcelona\\r\\nWhen: 6pm - 9pm\\r\\nAddress: Lollipop, Some Street, Somewhere in Sunny 123 Barcelona\\r\\nSome: more stuff\\r\\nAnd: even more info\\r\\nSo: whatever you want ...\\r\\n",
-            "creator": {
-                "login": "PatrickHeneise",
-                "id": 74390,
-                "avatar_url": "https://avatars.githubusercontent.com/u/74390?v=3",
-                "gravatar_id": "",
-                "url": "https://api.github.com/users/PatrickHeneise",
-                "html_url": "https://github.com/PatrickHeneise",
-                "followers_url": "https://api.github.com/users/PatrickHeneise/followers",
-                "following_url": "https://api.github.com/users/PatrickHeneise/following{/other_user}",
-                "gists_url": "https://api.github.com/users/PatrickHeneise/gists{/gist_id}",
-                "starred_url": "https://api.github.com/users/PatrickHeneise/starred{/owner}{/repo}",
-                "subscriptions_url": "https://api.github.com/users/PatrickHeneise/subscriptions",
-                "organizations_url": "https://api.github.com/users/PatrickHeneise/orgs",
-                "repos_url": "https://api.github.com/users/PatrickHeneise/repos",
-                "events_url": "https://api.github.com/users/PatrickHeneise/events{/privacy}",
-                "received_events_url": "https://api.github.com/users/PatrickHeneise/received_events",
-                "type": "User",
-                "site_admin": false
-            },
-            "open_issues": 3,
-            "closed_issues": 0,
-            "state": "open",
-            "created_at": "2015-01-17T16:15:43Z",
-            "updated_at": "2015-01-18T13:05:13Z",
-            "due_on": "2015-01-30T23:00:00Z",
-            "closed_at": null
-        },
-        "comments": 0,
-        "created_at": "2015-01-18T12:47:23Z",
-        "updated_at": "2015-01-18T13:05:19Z",
-        "closed_at": null,
-        "body": "---\\r\\nlevel: beginner | advanced | expert\\r\\nlanguage: en | es\\r\\ntwitter: YourTwitterHandle\\r\\nmonth: February\\r\\n\\r\\n---\\r\\n\\r\\nYour awesome talk description"
+{
+  "webhook": {
+    "label": "talk proposal",
+    "title": "Development environments using fig",
+    "level": "Beginner",
+    "language": "en",
+    "speaker": {
+      "twitter": "dias_jorge",
+      "name": "Jorge Dias",
+      "portrait": ""
     },
-    {
-        "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/2",
-        "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/2/labels{/name}",
-        "comments_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/2/comments",
-        "events_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/issues/2/events",
-        "html_url": "https://github.com/PatrickHeneise/gitup-testing/issues/2",
-        "id": 54666904,
-        "number": 2,
-        "title": "Awesome Talk",
-        "user": {
-            "login": "PatrickHeneise",
-            "id": 74390,
-            "avatar_url": "https://avatars.githubusercontent.com/u/74390?v=3",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/PatrickHeneise",
-            "html_url": "https://github.com/PatrickHeneise",
-            "followers_url": "https://api.github.com/users/PatrickHeneise/followers",
-            "following_url": "https://api.github.com/users/PatrickHeneise/following{/other_user}",
-            "gists_url": "https://api.github.com/users/PatrickHeneise/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/PatrickHeneise/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/PatrickHeneise/subscriptions",
-            "organizations_url": "https://api.github.com/users/PatrickHeneise/orgs",
-            "repos_url": "https://api.github.com/users/PatrickHeneise/repos",
-            "events_url": "https://api.github.com/users/PatrickHeneise/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/PatrickHeneise/received_events",
-            "type": "User",
-            "site_admin": false
+    "description": "Jorge Dias, Software Engineer turned Devops @ Xing, responsible for development and testing environments is going to talk about the research being done at Xing regarding the use of docker and will do a brief overview of working with fig and some custom tools to improve the workflow."
+  },
+  "event": {
+    "date": "2015-01-21T19:00:00.000Z",
+    "name": "BarcelonaJS",
+    "venue": {
+      "name": "Mobile World Centre",
+      "address": "C/ Fontanella 2, 08002 Barcelona",
+      "private": false
+    },
+    "talks": [
+      {
+        "title": "Serious text editing in the browser",
+        "level": "Advanced",
+        "language": "es",
+        "speaker": {
+          "twitter": "marijnjh",
+          "name": "Marijn Haverbeke",
+          "portrait": ""
         },
-        "labels": [
-            {
-                "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/labels/talk+proposal",
-                "name": "talk proposal",
-                "color": "0052cc"
-            }
-        ],
-        "state": "open",
-        "locked": false,
-        "assignee": null,
-        "milestone": {
-            "url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1",
-            "labels_url": "https://api.github.com/repos/PatrickHeneise/gitup-testing/milestones/1/labels",
-            "id": 939881,
-            "number": 1,
-            "title": "Some NodeJS Event in the Future",
-            "description": "Where: Barcelona\\r\\nWhen: 6pm - 9pm\\r\\nAddress: Lollipop, Some Street, Somewhere in Sunny 123 Barcelona\\r\\nSome: more stuff\\r\\nAnd: even more info\\r\\nSo: whatever you want ...\\r\\n",
-            "creator": {
-                "login": "PatrickHeneise",
-                "id": 74390,
-                "avatar_url": "https://avatars.githubusercontent.com/u/74390?v=3",
-                "gravatar_id": "",
-                "url": "https://api.github.com/users/PatrickHeneise",
-                "html_url": "https://github.com/PatrickHeneise",
-                "followers_url": "https://api.github.com/users/PatrickHeneise/followers",
-                "following_url": "https://api.github.com/users/PatrickHeneise/following{/other_user}",
-                "gists_url": "https://api.github.com/users/PatrickHeneise/gists{/gist_id}",
-                "starred_url": "https://api.github.com/users/PatrickHeneise/starred{/owner}{/repo}",
-                "subscriptions_url": "https://api.github.com/users/PatrickHeneise/subscriptions",
-                "organizations_url": "https://api.github.com/users/PatrickHeneise/orgs",
-                "repos_url": "https://api.github.com/users/PatrickHeneise/repos",
-                "events_url": "https://api.github.com/users/PatrickHeneise/events{/privacy}",
-                "received_events_url": "https://api.github.com/users/PatrickHeneise/received_events",
-                "type": "User",
-                "site_admin": false
-            },
-            "open_issues": 3,
-            "closed_issues": 0,
-            "state": "open",
-            "created_at": "2015-01-17T16:15:43Z",
-            "updated_at": "2015-01-18T13:05:13Z",
-            "due_on": "2015-01-30T23:00:00Z",
-            "closed_at": null
+        "description": "When a textarea doesn't cut it anymore, there are alternatives: full-featured text and code editors written in browser JavaScript. This talk is about CodeMirror, one such editor. It'll explore the intricacies of faking an editable control, the challenges of making it scale to hundreds of thousands of lines, and the integration of modern code editor features."
+      },
+      {
+        "title": "Development environments using fig",
+        "level": "Beginner",
+        "language": "en",
+        "speaker": {
+          "twitter": "dias_jorge",
+          "name": "Jorge Dias",
+          "portrait": ""
         },
-        "comments": 0,
-        "created_at": "2015-01-17T16:43:53Z",
-        "updated_at": "2015-01-17T16:44:30Z",
-        "closed_at": null,
-        "body": "---\\r\\nlevel: expert\\r\\nlanguage: en\\r\\ntwitter: @PatrickHeneise\\r\\nmonth: February\\r\\n\\r\\n---\\r\\n\\r\\nThis will be GOOOD!"
-    }
-]
+        "description": "Jorge Dias, Software Engineer turned Devops @ Xing, responsible for development and testing environments is going to talk about the research being done at Xing regarding the use of docker and will do a brief overview of working with fig and some custom tools to improve the workflow."
+      }
+    ]
+  }
+}
