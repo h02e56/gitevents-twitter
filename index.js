@@ -19,14 +19,11 @@ module.exports =  function(config){
 	return {
 		//upload a new tweet
 		sendTweet: function(talk, cb){
-
 			formatter(talk, function(err, res){
 				if(err) throw new Error(err)
-
 				var message = {
 					status: res
 				}
-
 				twitterRestClient.statusesUpdate(message, function(err, res) {
 			        if (err){
 			            cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
