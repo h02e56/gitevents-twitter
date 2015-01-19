@@ -21,15 +21,15 @@ module.exports =  function(config){
 		sendTweet: function(talk, cb){
 			formatter(talk, function(err, res){
 				if(err) throw new Error(err)
+
+				//twitter data object format
 				var message = {
 					status: res
 				}
+
 				twitterRestClient.statusesUpdate(message, function(err, res) {
-			        if (err){
-			            cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
-			        }if (res){
-			            cb(null, res);
-			        }
+			        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
+			        else cb(null, res);
 				})
 			})
 		}
