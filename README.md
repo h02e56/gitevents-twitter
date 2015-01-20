@@ -1,10 +1,10 @@
 gitevents-twitter
 =====
-Twitter module for gitevents [https://github.com/h02e56/gitevents-twitter.git](https://github.com/h02e56/gitevents-twitter.git)
+Twitter module for gitevents [https://github.com/GitEvents/gitevents.git](https://github.com/GitEvents/gitevents.git)
 
 ## Introduction
 
-This is pendding to revisision or modification by the group depending on common needs:
+This is pending to revisision or modification by the group depending on common needs:
 
 gitevents-twitter is an gitevents module that will publish:
 
