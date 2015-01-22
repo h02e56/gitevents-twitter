@@ -17,20 +17,24 @@ module.exports =  function(config){
 	);
 
 	return {
-		//upload a new tweet
-		sendTweet: function(talk, cb){
-			formatter(talk, function(err, res){
+		//
+		init : function(webhook, cb){
+			var self = this
+			formatter(webhook, function(err, res){
 				if(err) throw new Error(err)
-
-				//twitter data object format
-				var message = {
-					status: res
-				}
-
-				twitterRestClient.statusesUpdate(message, function(err, res) {
-			        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
-			        else cb(null, res);
-				})
+				self.send(res, cb)
+			})
+		},
+		//send tweet
+		send: function(data, cb){
+			debugger;
+			//twitter data object format
+			var message = {
+				status: data
+			}
+			twitterRestClient.statusesUpdate(message, function(err, res) {
+		        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
+		        else cb(null, res);
 			})
 		}
 	}
