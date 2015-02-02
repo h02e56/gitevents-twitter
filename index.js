@@ -27,7 +27,6 @@ module.exports =  function(config){
 		},
 		//send tweet
 		send: function(data, cb){
-			debugger;
 			//twitter data object format
 			var message = {
 				status: data
