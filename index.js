@@ -21,6 +21,7 @@ module.exports =  function(config){
 		init : function(webhook, cb){
 			var self = this
 			formatter(webhook, function(err, res){
+				debugger
 				if(err) throw new Error(err)
 				self.send(res, cb)
 			})

@@ -1,5 +1,5 @@
 var moment = require("moment");
-var twttrtxt = require('node-twitter-text');
+var twttr = require('twitter-text');
 
 module.exports = function(webhook, cb){
 	if(!webhook) return cb('should provide a webhook', null)
@@ -8,40 +8,57 @@ module.exports = function(webhook, cb){
 
 	doFormat(label)
 
-	function formatTalks(){
-		var talks = webhook.event.talks
-			, eventTwitter = webhook.event.twitter
-			, eventDate = moment(webhook.event.date).format('L')
-			, meetupURL = webhook.event.url
-
-		talks.map(function(talk){
-			var description = 'New talk: '+ makeid();
-				// 	description += ' ' + eventDate
-			// description += ' @' + talk.speaker.twitter
-			// description += ' '+ twitter.autoLink(twitter.htmlEscape('talk.title'))
-
-			talk.description = 'Angular in deepth. router, controller, views,  ';
-				
-			description += ' ' + 'www.test.com';
-			
-			var remainingCharacters = 140 - 3 - twttr.txt.getTweetLength(description);
-			
-			description += ' ' + talk.description.slice(0, remainingCharacters ) + ' ...'
-
-			// description += '' + talk.description.slice(0, pendingChars).toLowerCase()
-			//lets send it back to send it
-			cb(null, description)
-		})
-	}
-	  
 	//different formatters depending on label hook(format)
 	function doFormat(format) {
 		var formats = {
+
 			'talks': function talk () {
-				console.log('talk')
+				var talks = webhook.event.talks
+					, eventTwitter = webhook.event.twitter
+					, eventDate = moment(webhook.event.date).format('L')
+					, eventURL = webhook.event.url
+					, testTweetFails
+					, description= '';
+
+				talks.map(function(talk){
+					var talkDescription = talk.description;
+
+					description = 'New talk: ' + makeid();
+
+					//start text creation
+					description += ' ' + eventURL;
+					description += ' ' + talkDescription.slice(0, getRemainingChars(description)) + '...'
+					
+					//check tweet
+					checkTweet(description, function(err, res){
+						if(err) return cb(err, null)
+						//send back our correct formatted tweet
+						cb(null, description)
+					})					
+				})
 			},
+
 			'jobs': function jobs () {
-				console.log('job')
+				var jobs = webhook.jobs
+					, description = ''
+
+				jobs.map(function(job){
+					var company = job.company
+						, jobDescription = job.description;
+
+					description = 'New job offer: ' + makeid();
+
+					description += ' ' + company 
+					description += ' ' + twttr.htmlEscape(jobDescription.slice(0, getRemainingChars(description))) + '...'
+
+					//check tweet
+					checkTweet(description, function(err, res){
+						if(err) return cb(err, null)
+						//send back our correct formatted tweet
+						cb(null, description)
+					})					
+				})
+					
 			}
 		}
 
@@ -52,6 +69,17 @@ module.exports = function(webhook, cb){
 		return formats[format]()
 	} 
 
+	function getRemainingChars(text){
+		return 140 - 4 - twttr.getTweetLength(text);
+	}
+
+	//check if our tweet will be accepted bt the twitter api
+	function checkTweet(text, cb){
+		var testTweetFails = twttr.isInvalidTweet(text)
+		if(testTweetFails) return cb(testTweetFails, null)
+		return cb(null)
+	}
+
 	//just to create a different tweet than previous
 	function makeid(){
 		var text = "";
@@ -60,6 +88,4 @@ module.exports = function(webhook, cb){
 		    text += possible.charAt(Math.floor(Math.random() * possible.length));
 		return text;
 	}
-
-
 }
