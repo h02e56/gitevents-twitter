@@ -17,12 +17,10 @@ this module will receive an object with some required params(all of this pending
 1. `webhook {Object}`: right now with just one required parameter:
 	* `label {String}`: could be "talk proposal" or "jobs"
 
-if previous label is "talk proposal" next param will be:
-2. `talks {Array}`: Array of objects with this required params by now:
+2. if previous label is "talk proposal": `talks {Array}`: Array of objects with this required params by now:
 	* `description {String}`: could be "talk proposal" or "jobs"
 
-else if previous label is "jobs" will next param will be:
-2. `jobs {Array}`: Array of objects with this required params:
+2. else if previous label is "jobs" : `jobs {Array}`: Array of objects with this required params:
 	* 'company {String}`
 	* 'description {String}`
 
