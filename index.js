@@ -32,6 +32,7 @@ module.exports =  function(config){
 			var message = {
 				status: data
 			}
+			debugger
 			twitterRestClient.statusesUpdate(message, function(err, res) {
 		        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
 		        else cb(null, res);

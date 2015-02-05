@@ -12,7 +12,7 @@ module.exports = function(webhook, cb){
 	function doFormat(format) {
 		var formats = {
 
-			'talks': function talk () {
+			'talk proposal': function talk () {
 				var talks = webhook.event.talks
 					, eventTwitter = webhook.event.twitter
 					, eventDate = moment(webhook.event.date).format('L')
@@ -23,7 +23,7 @@ module.exports = function(webhook, cb){
 				talks.map(function(talk){
 					var talkDescription = talk.description;
 
-					description = 'New talk: ' + makeid();
+					description = 'New talk:';
 
 					//start text creation
 					description += ' ' + eventURL;
@@ -46,7 +46,7 @@ module.exports = function(webhook, cb){
 					var company = job.company
 						, jobDescription = job.description;
 
-					description = 'New job offer: ' + makeid();
+					description = 'New job offer:';
 
 					description += ' ' + company 
 					description += ' ' + twttr.htmlEscape(jobDescription.slice(0, getRemainingChars(description))) + '...'
@@ -58,7 +58,6 @@ module.exports = function(webhook, cb){
 						cb(null, description)
 					})					
 				})
-					
 			}
 		}
 

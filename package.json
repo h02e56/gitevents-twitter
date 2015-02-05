@@ -9,14 +9,12 @@
   },
   "author": "Josep Boada <josep@h02e56.com>",
   "main": "index.js",
-  "test": "test.js",
+  "repository":{
+    "type":"git",
+    "url": "git@github.com:h02e56/gitevents-twitter.git"
+  },
   "dependencies": {
-    "install": "^0.1.8",
-    "isodate": "^0.1.4",
     "moment": "^2.9.0",
-    "node-twitter": "^0.5.2",
-    "node-twitter-text": "^1.4.14",
-    "npm": "^2.4.1",
     "twitter-text": "^1.11.0"
   },
   "devDependencies": {
