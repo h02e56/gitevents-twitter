@@ -17,11 +17,9 @@ module.exports =  function(config){
 	);
 
 	return {
-		//
 		init : function(webhook, cb){
 			var self = this
 			formatter(webhook, function(err, res){
-				debugger
 				if(err) throw new Error(err)
 				self.send(res, cb)
 			})
@@ -32,11 +30,10 @@ module.exports =  function(config){
 			var message = {
 				status: data
 			}
-			debugger
-			twitterRestClient.statusesUpdate(message, function(err, res) {
-		        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
-		        else cb(null, res);
-			})
+			// twitterRestClient.statusesUpdate(message, function(err, res) {
+		 //        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
+		 //        else cb(null, res);
+			// })
 		}
 	}
 	
