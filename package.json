@@ -5,13 +5,17 @@
   "description": "Wrapper module to send tweets",
   "scripts": {
     "test": "tape test.js",
-    "debug": "node-debug test.js"
+    "dev": "nodemon --debug test.js"
   },
   "author": "Josep Boada <josep@h02e56.com>",
   "main": "index.js",
-  "test": "test.js",
+  "repository":{
+    "type":"git",
+    "url": "git@github.com:h02e56/gitevents-twitter.git"
+  },
   "dependencies": {
-    "node-twitter": "^0.5.2"
+    "moment": "^2.9.0",
+    "twitter-text": "^1.11.0"
   },
   "devDependencies": {
     "tape": "^3.2.0"

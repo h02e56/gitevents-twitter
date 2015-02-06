@@ -1,34 +1,100 @@
 var giteventsTwitter = require('./index.js')();
-var test = require('tape');
+var test = require('tape')
 
-test('post tweet works', function(t){
-	t.plan(1)
+var fakeDataTalks = {
+  "webhook": {
+    "label": "talk proposal",
+    "title": "Development environments using fig",
+    "level": "Beginner",
+    "language": "en",
+    "speaker": {
+      "twitter": "bcnjs",
+      "name": "Jorge Dias",
+      "portrait": ""
+    },
+    "description": "Soft Engineer for development and testing environments is going to talk about the research being done at Xing regarding the use of docker and will do a brief overview of working with fig and some custom tools to improve the workflow"
+  },
+  "event": {
+    "date": "2015-01-21T19:00:00.000Z",
+    "name": "BarcelonaJS",
+    "twitter": "bcnjs",
+    "venue": {
+      "name": "Mobile World Centre",
+      "address": "C/ Fontanella 2, 08002 Barcelona",
+      "private": false
+    },
+    "url":"www.meetup.com",
+    "talks": [
+      {
+        "title": "Serious text editing in the browser",
+        "level": "Advanced",
+        "language": "es",
+        "speaker": {
+          "twitter": "bcnjs",
+          "name": "Marijn Haverbeke",
+          "portrait": ""
+        },
+        "description": makeid() + "When an textarea do cut it anymore alternatives: full-featured text and code editors written in browser JavaScript. This talk is about CodeMirror, one such editor. It'll explore the intricacies of faking an editable control, the challenges of making it scale to hundreds of thousands of lines, and the integration of modern code editor"
+      },
+      {
+        "title": "Development environments using fig",
+        "level": "Beginner",
+        "language": "en",
+        "speaker": {
+          "twitter": "bcnjs",
+          "name": "Jorge Dias",
+          "portrait": ""
+        },
+        "description": makeid() + "Software Engineer turned  responsible for development and testing environments is going to talk about the research being done at Xing regarding the use of docker and will do a brief overview of working with fig and some custom tools to improve the workflow."
+      }
+    ]
+  }
+}
 
-	var res = false;
-	var fakeData = {
-		status: 'test fake dat2' + makeid()
-	}
+var fakeDataJobs = {
+    "webhook": {
+        "label": "jobs",
+        "title": "New cool Job",
+        "company": "lolipop",
+        "description": "We're looking for Ninjas, because Ninja just sounds cool."
+    },
+    "jobs": [
+        {
+            "title": "New cool Job",
+            "company": makeid() + "lolipop",
+            "description": "We're looking for Ninjas, because Ninja just sounds cool."
+        },
+        {
+            "title": "New cool Job",
+            "company": makeid() +  "lolipop",
+            "description": "We're looking for Ninjas, because Ninja just sounds cool."
+        }
+    ]
+}
 
-	giteventsTwitter.sendTweet(fakeData, function(err, data){
-		if(err) {
-			console.log(err);
-		}else res=true
-		
-		t.equal(res, true);
+test('post talks tweet works', function(t){
+	t.plan(2)
+	giteventsTwitter.init(fakeDataTalks, function(err, res){
+		t.ok(res, 'we get a response from server');
 	})
-
-	function makeid()
-	{
-		var text = "";
-		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-		for( var i=0; i < 5; i++ )
-		    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-		return text;
-	}
 });
 
+test('post jobs tweet works', function(t){
+	t.plan(2)
+	giteventsTwitter.init(fakeDataJobs, function(err, res){
+		t.ok(res, 'we get a response from server for jobs');
+	})
+});
+
+
+
+function makeid(){
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for( var i=0; i < 5; i++ )
+	    text += possible.charAt(Math.floor(Math.random() * possible.length));
+	return text;
+}
 
 
 

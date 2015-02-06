@@ -1,4 +1,5 @@
 var Twitter = require('node-twitter');
+var formatter = require('./formatter');
 
 module.exports =  function(config){
 	
@@ -8,7 +9,6 @@ module.exports =  function(config){
 	    throw new Error('No twitter configuration found');
 	}
 
-	debugger;
 	var twitterRestClient = new Twitter.RestClient(
     	config.twitter.consumer_key,
 	    config.twitter.consumer_secret,
@@ -17,15 +17,23 @@ module.exports =  function(config){
 	);
 
 	return {
-		//upload a new tweet
-		sendTweet: function(data, cb){
-			twitterRestClient.statusesUpdate(data, function(err, res) {
-		        if (err){
-		            cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
-		        }if (res){
-		            cb(null, res);
-		        }
+		init : function(webhook, cb){
+			var self = this
+			formatter(webhook, function(err, res){
+				if(err) throw new Error(err)
+				self.send(res, cb)
 			})
+		},
+		//send tweet
+		send: function(data, cb){
+			//twitter data object format
+			var message = {
+				status: data
+			}
+			// twitterRestClient.statusesUpdate(message, function(err, res) {
+		 //        if (err) return cb('Error: ' + (err.code ? err.code + ' ' + err.message : err.message), null);
+		 //        else cb(null, res);
+			// })
 		}
 	}
 	
