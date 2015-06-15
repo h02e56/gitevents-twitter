@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "moment": "^2.9.0",
-    "twitter-text": "^1.11.0"
+    "twitter-text": "^1.11.0",
+    "node-twitter": "^0.5.2"
   },
   "devDependencies": {
     "tape": "^3.2.0"
