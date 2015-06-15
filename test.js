@@ -1,5 +1,18 @@
-var giteventsTwitter = require('./index.js')();
-var test = require('tape')
+var giteventsTwitter = require('./index.js')(
+//{
+  //NOTE: If you uncomment these lines and change them to valid values,
+  //      DO NOT update this file on github. Alternatively, edit the config.js file,
+  //      which will be automatically picked up by index.js.
+  //      DO NOT put your config.js changes on github, either.
+  //twitter: {
+  //  consumer_key: 1,
+  //  consumer_secret: 1,
+  //  token: 1,
+  //  token_secret: 1
+  //}
+//}
+);
+var test = require('tape');
 
 var fakeDataTalks = {
   "webhook": {
@@ -23,7 +36,7 @@ var fakeDataTalks = {
       "address": "C/ Fontanella 2, 08002 Barcelona",
       "private": false
     },
-    "url":"www.meetup.com",
+    "url": "www.meetup.com",
     "talks": [
       {
         "title": "Serious text editing in the browser",
@@ -49,28 +62,28 @@ var fakeDataTalks = {
       }
     ]
   }
-}
+};
 
 var fakeDataJobs = {
-    "webhook": {
-        "label": "jobs",
-        "title": "New cool Job",
-        "company": "lolipop",
-        "description": "We're looking for Ninjas, because Ninja just sounds cool."
+  "webhook": {
+    "label": "jobs",
+    "title": "New cool Job",
+    "company": "lolipop",
+    "description": "We're looking for Ninjas, because Ninja just sounds cool."
+  },
+  "jobs": [
+    {
+      "title": "New cool Job",
+      "company": makeid() + "lolipop",
+      "description": "We're looking for Ninjas, because Ninja just sounds cool."
     },
-    "jobs": [
-        {
-            "title": "New cool Job",
-            "company": makeid() + "lolipop",
-            "description": "We're looking for Ninjas, because Ninja just sounds cool."
-        },
-        {
-            "title": "New cool Job",
-            "company": makeid() +  "lolipop",
-            "description": "We're looking for Ninjas, because Ninja just sounds cool."
-        }
-    ]
-}
+    {
+      "title": "New cool Job",
+      "company": makeid() + "lolipop",
+      "description": "We're looking for Ninjas, because Ninja just sounds cool."
+    }
+  ]
+};
 
 test('post talks tweet works', function(t){
 	t.plan(2)
@@ -86,8 +99,6 @@ test('post jobs tweet works', function(t){
 	})
 });
 
-
-
 function makeid(){
 	var text = "";
 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -95,6 +106,3 @@ function makeid(){
 	    text += possible.charAt(Math.floor(Math.random() * possible.length));
 	return text;
 }
-
-
-
