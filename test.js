@@ -85,6 +85,24 @@ var fakeDataJobs = {
   ]
 };
 
+// NOTE: replace our module's send function with a mock.
+//       It simply tests whether any data is provided.
+//       If so, it invokes callback with a success
+//       value, otherwise it invokes cb with error message.
+giteventsTwitter.send = function (data, cb) {
+
+  if (data === undefined) {
+    console.log("send() received no tweet");
+
+    return cb("no tweet created");
+  }
+
+//actual fn sends a tweet here
+  console.log('\n' + data + '\n');
+
+  return cb(null, "stub return");
+};
+
 test('post talks tweet works', function(t){
 	t.plan(2)
 	giteventsTwitter.init(fakeDataTalks, function(err, res){
