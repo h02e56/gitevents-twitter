@@ -85,18 +85,86 @@ var fakeDataJobs = {
   ]
 };
 
+// NOTE: replace our module's send function with a mock.
+//       It simply tests whether any data is provided.
+//       If so, it invokes callback with the data,
+//       otherwise it invokes callback with an error message.
+giteventsTwitter.send = function (data, cb) {
+  if (data === undefined) {
+    console.error("send() received no tweet");
+
+    return cb("no tweet created");
+  }
+
+//actual fn sends a tweet here
+
+  return cb(null, data);
+};
+
 test('post talks tweet works', function(t){
-	t.plan(2)
-	giteventsTwitter.init(fakeDataTalks, function(err, res){
-		t.ok(res, 'we get a response from server');
-	})
+  t.plan(2);
+
+  giteventsTwitter.init(fakeDataTalks, function (err, res) {
+    if (err) {
+      return console.error(err);
+    }
+
+    t.ok(res, 'we get a response from server');
+  });
 });
 
 test('post jobs tweet works', function(t){
-	t.plan(2)
+  t.plan(2);
+
 	giteventsTwitter.init(fakeDataJobs, function(err, res){
-		t.ok(res, 'we get a response from server for jobs');
+    if (err) {
+      return console.error(err);
+    }
+
+    t.ok(res, 'we get a response from server for jobs');
 	})
+});
+
+// Creates array of sent tweets then checks array elements
+// for correctness and array for length. Either tweet
+// may arrive first, so this is handled. Removes 5 character
+// id from tweet before checks.
+test('talk tweets match expected results', function (t) {
+  var tempTweet = "",
+    tweetAsArray = [],
+    tweetsSent = [],
+    tweet1 = "New talk: www.meetup.com When an textarea do cut it anymore alternatives: full-featured text and code editors written in bro...",
+    tweet2 = "New talk: www.meetup.com Software Engineer turned  responsible for development and testing environments is going to talk abo...";
+
+  t.plan(2);
+
+  giteventsTwitter.init(fakeDataTalks, function (err, res) {
+    if (err) {
+      return console.error(err);
+    }
+
+    // remove 5 char id from tweet before adding to array
+    tweetAsArray = res.split('');
+    tweetAsArray.splice(25, 5);
+    res = tweetAsArray.join('');
+    tweetsSent.push(res);
+
+    // wait for both tweets to be sent (i.e. stored in the array)
+    if (tweetsSent.length === 2) {
+      // may need to swap tweets around before check
+      if (tweetsSent[0] !== tweet1) {
+        tempTweet = tweetsSent[0];
+        tweetsSent[0] = tweetsSent[1];
+        tweetsSent[1] = tempTweet;
+      }
+
+      t.equal(tweetsSent[0], tweet1, 'tweet 1 matches expected result');
+      t.equal(tweetsSent[1], tweet2, 'tweet 2 matches expected result');
+    }
+    else if (tweetsSent.length > 2) {
+      t.fail('too many tweets sent');
+    }
+  });
 });
 
 function makeid(){
