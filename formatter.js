@@ -1,7 +1,7 @@
 var moment = require("moment");
 var twttr = require('twitter-text');
 
-module.exports = function(webhook, cb){
+module.exports = function(webhook, customFormat, cb){
 	if(!webhook) return cb('should provide a webhook', null)
 	
 	var label = webhook.webhook.label;
@@ -23,12 +23,17 @@ module.exports = function(webhook, cb){
 				talks.map(function(talk){
 					var talkDescription = talk.description;
 
-					description = 'New talk:';
+					if (customFormat !== undefined && customFormat === 'custom') {
+						description = "LNUG talk - @" + talk.speaker.twitter + " - " + talk.title;
+					}
+					else {
+						description = 'New talk:';
 
-					//start text creation
-					description += ' ' + eventURL;
-					description += ' ' + talkDescription.slice(0, getRemainingChars(description)) + '...'
-					
+						//start text creation
+						description += ' ' + eventURL;
+						description += ' ' + talkDescription.slice(0, getRemainingChars(description)) + '...'
+					}
+
 					//check tweet
 					checkTweet(description, function(err, res){
 						if(err) return cb(err, null)

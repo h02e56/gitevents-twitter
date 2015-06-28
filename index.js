@@ -17,9 +17,18 @@ module.exports =  function(config){
 	);
 
 	return {
-		init : function(webhook, cb){
-			var self = this
-			formatter(webhook, function(err, res){
+		// customFormat parameter is optional
+		init : function(webhook, customFormat, cb){
+			var self = this;
+
+			// check if customFormat parameter has been provided - if not,
+			// need to reassign cb parameter
+			if (cb === undefined && customFormat !== undefined && typeof customFormat === 'function') {
+				cb = customFormat;
+				customFormat = undefined;
+			}
+
+			formatter(webhook, customFormat, function(err, res){
 				if(err) throw new Error(err)
 				self.send(res, cb)
 			})

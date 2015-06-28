@@ -147,8 +147,43 @@ test('talk tweets match expected results', function (t) {
     tweetAsArray = res.split('');
     tweetAsArray.splice(25, 5);
     res = tweetAsArray.join('');
+
     tweetsSent.push(res);
 
+    // wait for both tweets to be sent (i.e. stored in the array)
+    if (tweetsSent.length === 2) {
+      // may need to swap tweets around before check
+      if (tweetsSent[0] !== tweet1) {
+        tempTweet = tweetsSent[0];
+        tweetsSent[0] = tweetsSent[1];
+        tweetsSent[1] = tempTweet;
+      }
+
+      t.equal(tweetsSent[0], tweet1, 'tweet 1 matches expected result');
+      t.equal(tweetsSent[1], tweet2, 'tweet 2 matches expected result');
+    }
+    else if (tweetsSent.length > 2) {
+      t.fail('too many tweets sent');
+    }
+  });
+});
+
+//  This test calls init(), providing the optional second parameter
+// as "custom", which builds the tweet using a custom format.
+// Otherwise, the test is the same as the 'talk tweets match expected results'
+// test directly above this one.
+test('custom talk tweets match expected results', function (t) {
+  var tweetsSent = [],
+    tweet1 = "LNUG talk - @bcnjs - Serious text editing in the browser",
+    tweet2 = "LNUG talk - @bcnjs - Development environments using fig";
+
+  t.plan(2);
+
+  giteventsTwitter.init(fakeDataTalks, "custom", function (err, res) {
+    if (err) {
+      return console.error(err);
+    }
+    tweetsSent.push(res);
     // wait for both tweets to be sent (i.e. stored in the array)
     if (tweetsSent.length === 2) {
       // may need to swap tweets around before check
