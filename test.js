@@ -78,14 +78,19 @@ var fakeDataJobs = {
 //       If so, it invokes callback with the data,
 //       otherwise it invokes callback with an error message.
 //       we are not testing twitter api,
-var sendStub = sinon.stub(giteventsTwitter, "send", function (data, cb) {
-  if (!data) {
-    console.error("send() received no tweet");
-    return cb("no tweet created");
-  }
-  //actual fn sends a tweet here
-  return cb(null, data);
-});
+test('setup', function (t) {
+  var sendStub = sinon.stub(giteventsTwitter, "send", function (data, cb) {
+    if (!data) {
+      console.error("send() received no tweet");
+      return cb("no tweet created");
+    }
+    //actual fn sends a tweet here
+    return cb(null, data);
+  });
+
+  t.end()
+})
+
 
 test('post talks tweet works', function(t){
   t.plan(2);
@@ -175,6 +180,12 @@ test('custom talk tweets match expected results', function (t) {
     }
   });
 });
+
+//restore  stubbed method
+test('end', function (t) {
+  giteventsTwitter.send.restore()
+  t.end()
+})
 
 function makeid(){
 	var text = "";
