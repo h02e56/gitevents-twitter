@@ -9,8 +9,8 @@
   },
   "author": "Josep Boada <josep@h02e56.com>",
   "main": "index.js",
-  "repository":{
-    "type":"git",
+  "repository": {
+    "type": "git",
     "url": "git@github.com:h02e56/gitevents-twitter.git"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "node-twitter": "^0.5.2"
   },
   "devDependencies": {
+    "sinon": "^1.15.4",
     "tape": "^3.2.0"
   }
 }

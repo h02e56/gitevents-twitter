@@ -1,17 +1,5 @@
-var giteventsTwitter = require('./index.js')(
-//{
-  //NOTE: If you uncomment these lines and change them to valid values,
-  //      DO NOT update this file on github. Alternatively, edit the config.js file,
-  //      which will be automatically picked up by index.js.
-  //      DO NOT put your config.js changes on github, either.
-  //twitter: {
-  //  consumer_key: 1,
-  //  consumer_secret: 1,
-  //  token: 1,
-  //  token_secret: 1
-  //}
-//}
-);
+var giteventsTwitter = require('./index.js')();
+var sinon = require('sinon')
 var test = require('tape');
 
 var fakeDataTalks = {
@@ -85,42 +73,33 @@ var fakeDataJobs = {
   ]
 };
 
-// NOTE: replace our module's send function with a mock.
+// NOTE: replace our module's send function with a sinon stub.
 //       It simply tests whether any data is provided.
 //       If so, it invokes callback with the data,
 //       otherwise it invokes callback with an error message.
-giteventsTwitter.send = function (data, cb) {
-  if (data === undefined) {
+//       we are not testing twitter api,
+var sendStub = sinon.stub(giteventsTwitter, "send", function (data, cb) {
+  if (!data) {
     console.error("send() received no tweet");
-
     return cb("no tweet created");
   }
-
-//actual fn sends a tweet here
-
+  //actual fn sends a tweet here
   return cb(null, data);
-};
+});
 
 test('post talks tweet works', function(t){
   t.plan(2);
-
   giteventsTwitter.init(fakeDataTalks, function (err, res) {
-    if (err) {
-      return console.error(err);
-    }
-
+    if (err) return console.error(err);
     t.ok(res, 'we get a response from server');
+    sinon
   });
 });
 
 test('post jobs tweet works', function(t){
   t.plan(2);
-
 	giteventsTwitter.init(fakeDataJobs, function(err, res){
-    if (err) {
-      return console.error(err);
-    }
-
+    if (err) return console.error(err);
     t.ok(res, 'we get a response from server for jobs');
 	})
 });
@@ -139,9 +118,7 @@ test('talk tweets match expected results', function (t) {
   t.plan(2);
 
   giteventsTwitter.init(fakeDataTalks, function (err, res) {
-    if (err) {
-      return console.error(err);
-    }
+    if (err) return console.error(err);
 
     // remove 5 char id from tweet before adding to array
     tweetAsArray = res.split('');
@@ -180,9 +157,7 @@ test('custom talk tweets match expected results', function (t) {
   t.plan(2);
 
   giteventsTwitter.init(fakeDataTalks, "custom", function (err, res) {
-    if (err) {
-      return console.error(err);
-    }
+    if (err) return console.error(err);
     tweetsSent.push(res);
     // wait for both tweets to be sent (i.e. stored in the array)
     if (tweetsSent.length === 2) {
