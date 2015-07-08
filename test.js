@@ -155,7 +155,7 @@ test('talk tweets match expected results', function (t) {
 // test directly above this one.
 test('custom talk tweets match expected results', function (t) {
   var tweetsSent = [],
-    tweet1 = "LNUG talk - @bcnjs - Serious text editing in the browser",
+    tweet1 = "LNU talk - @bcnjs - Serious text editing in the browser",
     tweet2 = "LNUG talk - @bcnjs - Development environments using fig";
 
   t.plan(2);
