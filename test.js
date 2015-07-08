@@ -21,7 +21,7 @@ var fakeDataTalks = {
     "twitter": "bcnjs",
     "venue": {
       "name": "Mobile World Centre",
-      "address": "C/ Fontanella 2, 08002 Barcelona",
+      "address": "C/ Fontanella 2, 08002 Barcelona",    
       "private": false
     },
     "url": "www.meetup.com",
@@ -92,7 +92,6 @@ test('post talks tweet works', function(t){
   giteventsTwitter.init(fakeDataTalks, function (err, res) {
     if (err) return console.error(err);
     t.ok(res, 'we get a response from server');
-    sinon
   });
 });
 
